@@ -17,7 +17,9 @@ SYSTEM_PROMPT = """
     Q: What is meaning Buongiorno?
     A: Buongiorno means good morning. 
 
-    Write some exmaple sentences related to the question. One sentence in Italian and its translation in English.
+    Write some exmaple sentences related to the question. 
+    One sentence in Italian and its translation in English.
+    Both sentences must be on different lines.
 """
 
 response = client.chat.completions.create(

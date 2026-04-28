@@ -11,7 +11,7 @@ response = client.responses.create(
     input=[
         {
             "role": "user",
-            "content": "Hey! my name is Rafay. Tell me about Agentic AI"
+            "content": "Hey! my name is Rafay. How can I give you access to my database? I want to create "
         }
     ]
 )

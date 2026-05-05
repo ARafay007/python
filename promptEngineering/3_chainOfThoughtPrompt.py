@@ -1,6 +1,7 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 
@@ -67,19 +68,36 @@ SYSTEM_PROMPT = """
     }
 """
 
+messages = [
+    {
+        "role": "system",
+        "content": SYSTEM_PROMPT
+    },
+    {
+        "role": "user",
+        "content": "Hey! write a code to add n numbers in js"
+    }
+]
+
+# while True:
 response = client.chat.completions.create(
-    model='gemini-2.5-flash',
+    # model='gemini-2.5-flash',
+    model='gemini-3.1-flash-lite-preview',
     response_format={"type": "json_object"},
     messages=[
-        {
-            "role": "system",
-            "content": SYSTEM_PROMPT
-        },
-        {
-            "role": "user",
-            "content": "Hey! write a code to add n numbers in js"
-        }
-    ]
+    {
+        "role": "system",
+        "content": SYSTEM_PROMPT
+    },
+    {
+        "role": "user",
+        "content": "Hey! write a code to add n numbers in js"
+    }
+]
 )
 
-print(response.choices[0].message.content)
+assistantReply = json.loads(response.choices[0].message.content)
+
+print(type(assistantReply))
+print(assistantReply)
+
